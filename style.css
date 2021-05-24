@@ -6,3 +6,50 @@ Version: 1.0.0
 Author: Enno Hyttrek, recodeLAB
 Author URI: http://www.recodelab.com
 */
+
+
+/*
+TYPOGRAPHY
+*/
+
+body,
+.entry-content {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.3;
+}
+
+/*
+COLOR & STYLE
+*/
+
+body,
+main {
+    background: #fff;
+    color: hsl(200, 21%, 21%);
+}
+
+a,
+main a {
+    color: hsl(200, 21%, 21%) !important;
+}
+
+
+a:hover,
+main a:hover{
+    color: rgb(255, 128, 0) !important;
+}
+
+
+
+button,
+.button,
+.faux-button,
+.wp-block-button__link,
+.wp-block-file .wp-block-file__button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background: rgb(255, 128, 0);
+}
+

@@ -25,5 +25,11 @@ function twentytwenty_child_enqueue_styles() {
     );
 }
 
+
+function kidlab_localfonts() {
+    wp_enqueue_style( 'inter-font', get_stylesheet_directory_uri() . '/fonts/inter/font-style.css' );
+}
+add_action( 'wp_enqueue_scripts', 'kidlab_localfonts' );
+
 ?>
 
