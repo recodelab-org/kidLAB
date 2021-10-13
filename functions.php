@@ -1,35 +1,26 @@
 <?php
 
-/*
-The first below listed way of enqueueing a parant theme's szylesheet works with some parent themes. It is more generic than the second one below. In most cases, though, you may need to choose the second way and adjust the parent theme name handle accordingly.
 
-
-function my_theme_enqueue_styles() {
-    wp_enqueue_style( 'child-style', get_stylesheet_uri(),
-        array( 'parenthandle' ), 
-        wp_get_theme()->get('Version') // this only works if you have Version in the style header
+function my_child_styles() {
+    // loading parent style
+    wp_register_style(
+      'parent-style',
+      get_template_directory_uri() . '/style.css'
     );
-}
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
-*/
 
-
-add_action( 'wp_enqueue_scripts', 'twentytwenty_child_enqueue_styles' );
-function twentytwenty_child_enqueue_styles() {
-    $parent_style = 'twentytwenty-style';
-    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'twentytwenty-child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array( $parent_style ),
-        filemtime(get_stylesheet_directory() . '/style.css')
+    wp_enqueue_style( 'parent-style' );
+    // loading child style
+    wp_register_style(
+      'child-style',
+      get_stylesheet_directory_uri() . '/style.css'
     );
-}
+    wp_enqueue_style( 'child-style');
+ }
+add_action( 'wp_enqueue_scripts', 'my_child_styles' );
 
 
-function kidlab_localfonts() {
+function my_localfonts() {
     wp_enqueue_style( 'inter-font', get_stylesheet_directory_uri() . '/fonts/inter/font-style.css' );
+    wp_enqueue_style( 'fontawesome', get_stylesheet_directory_uri() . '/fonts/fontawesome/css/all.css' );
 }
-add_action( 'wp_enqueue_scripts', 'kidlab_localfonts' );
-
-?>
-
+add_action( 'wp_enqueue_scripts', 'my_localfonts' );
